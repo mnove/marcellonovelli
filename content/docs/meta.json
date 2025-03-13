@@ -1,0 +1,7 @@
+{
+  "title": "marcello",
+  "description": "The ui to build commerce app.",
+  "icon": "Cart",
+  "root": true,
+  "pages": ["---Profile---", "index", "...", "---Projects---", "...projects"]
+}

@@ -1,0 +1,6 @@
+{
+  "title": "Projects",
+  "description": "Handle global regions in your commerce app.",
+  "icon": "Globe",
+  "pages": ["overview", "..."]
+}
