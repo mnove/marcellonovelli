@@ -1,0 +1,61 @@
+---
+title: My stats
+description: A list of tools and technologies I use in my daily work.
+icon: Percent
+---
+
+## My stats
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+<CounterCard
+  title="Years of Experience"
+  targetValue={6}
+  description="in software development"
+  suffix="+"
+  delay={800}
+  className="bg-secondary text-secondary-foreground hover:bg-secondary/80 transition-colors duration-200"
+  counterClassName="text-6xl  text-primary"
+/>
+
+  <CounterCard
+    title="Lines of Code"
+    targetValue={50000}
+    description="written in 2024"
+    suffix="+"
+    delay={500}
+  />
+</div>
+
+<StatsGrid />
+
+
+
+
+
+
+<div className="grid grid-cols-1 md:grid-cols-2 gap-4 my-6">
+  <CounterCard
+    title="Coffee Cups"
+    targetValue={1247}
+    description="consumed this year"
+    prefix="☕"
+    delay={300}
+  />
+  
+  <CounterCard
+    title="Lines of Code"
+    targetValue={50000}
+    description="written in 2024"
+    suffix="+"
+    delay={500}
+  />
+</div>
+
+### Legacy Table Format
+
+| Metric | Value |
+|--------|-------|
+| GitHub Stars | 100+ |
+| Open Source Contributions | 50+ |
+| Projects Completed | 10+ |
+| Years of Experience | 6+ |            

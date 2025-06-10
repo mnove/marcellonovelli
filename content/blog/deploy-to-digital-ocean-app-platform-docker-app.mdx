@@ -1,0 +1,178 @@
+---
+title: How to deploy a Docker app to Digital Ocean App Platform + Prisma migrations
+description: A step-by-step guide to deploying a Dockerized Node.js app with Prisma migrations on Digital Ocean's App Platform.
+date: 2025-03-24
+author: marcello
+tags: ["docker", "digital-ocean", "prisma", "app-platform", "deployment"]
+---
+
+This guide walks you through deploying a Dockerized Node.js application with Prisma migrations on Digital Ocean's App Platform. We'll cover database setup, app deployment, and automated migrations.
+
+## Prerequisites
+
+Before starting, ensure you have:
+
+- A Docker image pushed to Docker Hub (public or private)
+- A Digital Ocean account
+- Basic knowledge of Docker and Prisma
+
+## 1. Set up a Database Cluster
+
+First, let's create a managed PostgreSQL database:
+
+1. Navigate to **Managed Databases** in your Digital Ocean dashboard
+2. Create a new database cluster:
+   - Choose the **lowest tier** for cost optimization
+   - Select **PostgreSQL** as the database type
+3. **Important**: Do not add "Trusted Sources" yet, as this will prevent the API service from connecting during the initial deployment
+4. Copy the **connection string** from the cluster settings - you'll need this later
+5. Wait a few minutes for the cluster to become ready before proceeding
+
+> **Note**: We'll secure the database with trusted sources later in the process.
+
+## 2. Deploy Your App via App Platform
+
+### Create the Application
+
+1. Go to **App Platform** and click **Create App**
+2. Choose **Deploy from a container registry**
+3. Select **Docker Hub** as your registry
+4. Configure your container:
+   - **Image name**: `your-docker-username/your-app-name:latest`
+   - **Authentication**: Only required for private repositories (use username and token)
+
+### Configure Environment Variables
+
+Set up your environment variables:
+
+- `SERVER_URL`: Use the dynamic variable `${APP_URL}`
+- `DATABASE_URL`: Paste the connection string from your database cluster
+- Add any other required environment variables
+
+### Set the Correct Port
+
+Change the default port to match your application's configuration (e.g., port `5001`).
+
+Click **Save** to deploy your application.
+
+## 3. Handle Database Migrations
+
+After deployment, your app will start successfully, but any Prisma-dependent endpoints will fail because the database tables don't exist yet. You have several options to handle migrations:
+
+### Option A: Manual Migrations ❌
+
+Manually connecting to the database to run migrations is not recommended for production environments.
+
+### Option B: Auto-migrations on App Start ⚠️
+
+While you could modify your Dockerfile to run migrations on startup, this approach has drawbacks:
+
+- **Race conditions**: Multiple instances might try to run migrations simultaneously
+- **Scaling issues**: Not suitable for horizontally scaled applications
+- **Production concerns**: Even with Prisma's migration locks, this isn't ideal for production
+
+### Option C: Separate Migration Service ✅ **Recommended**
+
+Create a dedicated migration job that runs before your app starts.
+
+## 4. Create a Migration Job
+
+### Add the Migration Job
+
+1. Go back to your App Platform application
+2. Click **Add Resources** → **Create resources from source code**
+3. Choose **Container Image** and select **Jobs**
+4. Configure the job:
+   - **Image**: Use the same Docker image as your main app
+   - **Tier**: Choose the cheapest option (migrations are lightweight)
+   - **Environment Variables**: Add `DATABASE_URL` with your database connection string
+
+### Configure Job Trigger
+
+In the **Job Trigger** section:
+
+- Select **Before every deploy**
+- **Build command**: Override the default Dockerfile command with:
+
+  ```bash
+  npx prisma migrate deploy
+  ```
+
+This command tells Digital Ocean to run Prisma migrations instead of starting the application.
+
+Click **Save** to create the job.
+
+## 5. Final Deployment
+
+Digital Ocean will now redeploy your application with the following sequence:
+
+1. **Migration job runs first**: Applies any pending database migrations
+2. **Main app starts**: Only after migrations complete successfully
+3. **Failure handling**: If migrations fail, the deployment stops and the app won't start
+
+Monitor the deployment logs to verify everything works correctly.
+
+## 6. Test Your Application
+
+### Health Check
+
+Test the basic functionality:
+
+```bash
+GET /api/health
+```
+
+Expected response: `200 OK` with a success message.
+
+### Database Operations
+
+Try creating a new user or performing other database operations to confirm Prisma is working correctly.
+
+## 7. Secure Database Connection (Recommended)
+
+### Attach Database to App
+
+1. In App Platform, go to your application
+2. Click **Add Resources** → **Create or attach Database**
+3. Select **Attach existing DO database**
+4. Choose your running database cluster
+5. Select the appropriate database name and user
+6. Add the API app as a **trusted source**
+7. Click **Attach Database**
+
+### Update Environment Variables
+
+After the deployment completes:
+
+1. **Main App**: Replace the hardcoded `DATABASE_URL` with the dynamic variable:
+
+   ```
+   ${db-postgresql-nyc3-25166.DATABASE_URL}
+   ```
+
+2. **Migration Job**: Update the `DATABASE_URL` environment variable with the same dynamic reference
+
+This setup provides:
+
+- ✅ Secure database connections
+- ✅ Automated migrations
+- ✅ Proper separation of concerns
+- ✅ Production-ready deployment pipeline
+
+## Important Notes
+
+- **Environment Variables**: Digital Ocean environment variables don't include trailing slashes
+  - Example: `CLIENT_URL = "https://your-app.pages.dev"`
+- **Consistency**: Apply the same URL format when setting `VITE_SERVER_URL` in other platforms like Cloudflare
+
+## Conclusion
+
+You now have a fully functional Digital Ocean setup with:
+
+- A running API service
+- Managed PostgreSQL database with secure connections
+- Automated migration capabilities
+- Production-ready deployment pipeline
+
+This architecture ensures your database schema stays synchronized with your application deployments while maintaining security and reliability.
+

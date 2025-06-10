@@ -3,7 +3,7 @@
 @plugin "tailwindcss-animate";
 
 @custom-variant dark (&:is(.dark *));
-@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/ocean.css";
 @import "fumadocs-ui/css/preset.css";
 
 @source '../node_modules/fumadocs-ui/dist/**/*.js';
@@ -33,7 +33,7 @@
 
   --muted-foreground: oklch(0.552 0.016 285.938);
 
-  --accent: oklch(0.967 0.001 286.375);
+  --accent: oklch(0.7 0.15 162);
 
   --accent-foreground: oklch(0.21 0.006 285.885);
 
@@ -101,7 +101,7 @@
 
   --muted-foreground: oklch(0.705 0.015 286.067);
 
-  --accent: oklch(0.274 0.006 286.033);
+  --accent: oklch(0.7 0.15 162);
 
   --accent-foreground: oklch(0.985 0 0);
 
