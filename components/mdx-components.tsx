@@ -10,6 +10,7 @@ import defaultComponents from "fumadocs-ui/mdx";
 import type { MDXComponents } from "mdx/types";
 import { CounterCard } from "@/components/ui/counter-card";
 import { StatsGrid } from "@/components/ui/stats-grid";
+import Journey from "./layout/journey/journey";
 
 export function getMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -41,6 +42,7 @@ export function getBlogMDXComponents(components: MDXComponents): MDXComponents {
     Accordion,
     Accordions,
     ImageZoom,
+    Journey: Journey,
     ...components,
   };
 }
