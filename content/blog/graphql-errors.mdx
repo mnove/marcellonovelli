@@ -7,7 +7,6 @@ tags: ["graphql", "error-handling", "typescript", "api-design"]
 ---
 
 
-
 GraphQL has revolutionized how we build APIs, offering powerful features like type safety, introspection, and flexible data fetching. However, one area where GraphQL can be challenging is error handling. Unlike traditional REST APIs that leverage HTTP status codes (404 for not found, 400 for validation errors, 500 for server errors), GraphQL typically returns a 200 status code with all responses, whether successful or not, embedding errors within the response payload.
 
 This fundamental difference in how GraphQL handles errors creates unique challenges for both API developers and client applications. The standard GraphQL error handling approach often results in generic error messages that lack the rich context needed for proper client-side error handling, making it difficult to create user-friendly applications with meaningful error feedback.
@@ -1057,7 +1056,8 @@ union CategoryResult = Category | ValidationError | NotFoundError | ConflictErro
 
 ### Union Type Resolution Strategy
 
-Proper union type resolution is critical for GraphQL to work correctly:
+Proper union type resolution is critical for GraphQL to work correctly.
+This way, GraphQL can resolve the correct type based on the `__typename` field.
 
 ```typescript
 // resolvers/index.ts
@@ -1095,7 +1095,7 @@ export const resolvers: Resolvers = {
 
 ### Error Creation Utility Patterns
 
-Create comprehensive utilities that ensure consistent error creation:
+You can also create comprehensive utilities that ensure consistent error creation:
 
 ```typescript
 // utils/errors.ts
@@ -1219,7 +1219,7 @@ export const TodoMutations = {
 
 ## Performance Considerations
 
-1. **Query Complexity**: Union types can increase query complexity. Use query complexity analysis to prevent abuse.
+1. **Query Complexity**: Union types can increase query complexity. Use query complexity analysis to prevent abuse. I use Graphql Armor to limit query depth and complexity.
 
 2. **Fragment Usage**: Encourage clients to use fragments to avoid requesting unnecessary error fields.
 
