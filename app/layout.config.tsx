@@ -1,3 +1,4 @@
+import { DownloadResumeButton } from "@/components/layout/resume/get-resume-btn";
 import { Icons } from "@/components/ui/icon";
 import type { BaseLayoutProps } from "fumadocs-ui/layouts/shared";
 
@@ -27,6 +28,10 @@ export const baseOptions: BaseLayoutProps = {
       text: "Blog",
       url: "/blog",
       active: "nested-url",
+    },
+    {
+      type: "custom",
+      children: <DownloadResumeButton />,
     },
   ],
 };

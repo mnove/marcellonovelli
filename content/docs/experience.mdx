@@ -5,9 +5,11 @@ icon: Briefcase
 ---
 
 import { BuildingIcon } from 'lucide-react';
+import { experiences } from "../../data/experience";
+import { ExperienceCard } from "../../components/layout/experience-card";
 
 
-## Product Lead | Developer | Co-Founder (SaaS / API)
+{/* ## Product Lead | Developer | Co-Founder (SaaS / API)
 **Stackzero** 
 
 Jan 2022 - Present
@@ -22,7 +24,12 @@ Jan 2022 - Present
 - Designed and architected the core API (Node.js, GraphQL) and web applications (React, Next.js) for the Stackzero platform.
 - Designed and develop the product's admin dashboard (React, TypeScript, TailwindCSS), documentation (Next.js, MDX) and marketing website (Next.js, TailwindCSS).
 
----
+--- */}
+
+{experiences.filter(exp => exp.type === 'work').map((experience) => (
+  <ExperienceCard key={experience.id} experience={experience} />
+))}
+
 ## Product & Operations Lead (Web / SaaS)
 **Octeract** 
 
