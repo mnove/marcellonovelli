@@ -2,9 +2,10 @@ import { LucideIcon, TerminalIcon } from "lucide-react";
 
 export const Icons = {
   Logo: () => (
-    <div className="p-1 border border-violet-500/50 rounded-md bg-gradient-to-b from-secondary shadow-sm">
-      MN
-    </div>
+    // <div className="p-1 border border-violet-500/50 rounded-md bg-gradient-to-b from-secondary shadow-sm">
+    //   MN
+    // </div>
+    <img width="32px" height="100%" src="/marcello-rounded.png" alt="Logo" />
   ),
   Github: () => (
     <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

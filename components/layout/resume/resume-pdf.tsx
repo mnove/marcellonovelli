@@ -164,7 +164,7 @@ export const PDFResume = () => (
         {experiences
           .filter((exp) => exp.type === "work")
           .map((experience) => (
-            <View key={experience.id} style={{ marginBottom: 20 }}>
+            <View key={experience.id} style={{ marginBottom: 20 }} wrap={false}>
               <View style={styles.experienceHeader}>
                 <Image
                   style={styles.logo}
