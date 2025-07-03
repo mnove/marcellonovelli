@@ -43,7 +43,7 @@ export const DownloadResumeButton = () => {
       className={buttonVariants({ variant: "outline", size: "sm" })}
     >
       <Download size={16} />
-      {isGenerating ? "Generating PDF..." : "Download my Resume"}
+      {isGenerating ? "Generating PDF..." : "Generate my Resume"}
     </button>
   );
 };
