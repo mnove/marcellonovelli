@@ -13,6 +13,7 @@ export interface Experience {
   description: string;
   shortDescription?: string;
   responsibilities: string[];
+  logoUrl?: string;
   badges?: Badge[];
   type: "work" | "education";
 }
@@ -31,6 +32,7 @@ type Project = {
   imageUrl?: string;
   badges?: Badge[];
   technologies?: string[];
+  logoUrl?: string;
 };
 
 export const hero: Hero = {
@@ -48,6 +50,8 @@ export const experiences: Experience[] = [
     period: "Jan 2022 - Present · 3yrs",
     location: "London, UK - Remote",
     companyUrl: "https://www.stackzero.co/",
+    logoUrl:
+      "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/stackzero.jpeg",
     description:
       "Stackzero is an API-first SaaS platform designed to simplify the development of commerce applications. As a co-founder and product lead, I played a pivotal role in shaping the product vision and technical architecture.",
     shortDescription:
@@ -71,6 +75,8 @@ export const experiences: Experience[] = [
     company: "Octeract",
     period: "Jan 2020 - Jan 2021 · 1y",
     location: "London, UK - Remote",
+    logoUrl:
+      "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/octeract.jpeg",
     description:
       "Octeract is an optimization and data analysis platform that helps businesses make data-driven decisions. My role involved working closely with the product team to design and develop the web application and first SaaS version of the product.",
 
@@ -95,6 +101,8 @@ export const experiences: Experience[] = [
     company: "Techstars / Nickelytics (Techstars Portfolio '20)",
     period: "Oct 2019 - Jan 2021 · 2yrs",
     location: "Turin, Italy - Florida, USA - Remote",
+    logoUrl:
+      "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/nickelytics.jpeg",
     companyUrl: "https://www.Nickelytics.com/",
     description:
       "Nickelytics is a data analytics platform that helps businesses make data-driven decisions. My role involved working closely with the product team to design and develop the web application.",
@@ -172,6 +180,8 @@ export const experiences: Experience[] = [
     title: "Operations Manager (Founding Team)",
     company: "Carv by MotionMetrics",
     period: "2017 - 2018 · 2 yrs",
+    logoUrl:
+      "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/carv.jpeg",
     location: "London, UK",
     companyUrl: "https://getcarv.com/",
     description:
@@ -200,6 +210,8 @@ export const projects: Project[] = [
     title: "Stackzero Dashboard",
     description: "Full-stack web app to manage headless e-commerce API.",
     url: "https://www.stackzero.co/",
+    logoUrl:
+      "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/stackzero.jpeg",
     badges: [
       { label: "Dashboard", color: "blue" },
       { label: "E-commerce", color: "green" },
@@ -221,6 +233,8 @@ export const projects: Project[] = [
     title: "Stackzero Commerce API",
     description: "A headless, API-first e-commerce platform.",
     url: "https://www.stackzero.co/",
+    logoUrl:
+      "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/stackzero.jpeg",
     badges: [
       { label: "API", color: "blue" },
       { label: "Headless", color: "green" },
@@ -234,6 +248,8 @@ export const projects: Project[] = [
     title: "Hyperlane app",
     description:
       "A low-code micro-app builder with drag-and-drop UI for internal tools.",
+    logoUrl:
+      "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/hyperlane.jpeg",
     url: "#", // No public URL provided in MDX
     badges: [
       { label: "Low-Code", color: "blue" },
@@ -248,6 +264,8 @@ export const projects: Project[] = [
     title: "commerce-ui",
     description:
       "An open-source, component library for building e-commerce sites and apps with React, Next.js, and Tailwind CSS.",
+    logoUrl:
+      "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/github.jpeg",
     url: "https://ui.stackzero.co",
     imageUrl: "https://ui.stackzero.co/logo.svg",
     badges: [

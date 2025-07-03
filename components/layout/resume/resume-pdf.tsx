@@ -334,10 +334,7 @@ export const PDFResume = () => (
           .map((experience) => (
             <View key={experience.id} style={{ marginBottom: 5 }} wrap={false}>
               <View style={styles.experienceHeader}>
-                <Image
-                  style={styles.logo}
-                  src="https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/marcello-rounded.png"
-                />
+                <Image style={styles.logo} src={experience.logoUrl} />
                 <View style={styles.experienceContent}>
                   <Text style={styles.title}>{experience.title}</Text>
 
@@ -387,10 +384,7 @@ export const PDFResume = () => (
         {projects.map((project) => (
           <View key={project.id} style={{ marginBottom: 5 }} wrap={false}>
             <View style={styles.experienceHeader}>
-              <Image
-                style={styles.logo}
-                src="https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/marcello-rounded.png"
-              />
+              <Image style={styles.logo} src={project.logoUrl} />
               <View style={styles.projectContent}>
                 <View
                   style={{
