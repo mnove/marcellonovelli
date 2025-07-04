@@ -3,5 +3,12 @@
   "description": "The ui to build commerce app.",
   "icon": "Cart",
   "root": true,
-  "pages": ["---Profile---", "index", "...", "---Projects---", "...projects"]
+  "pages": [
+    "---Profile---",
+    "index",
+    "...",
+    "!my-journey",
+    "---Projects---",
+    "...projects"
+  ]
 }

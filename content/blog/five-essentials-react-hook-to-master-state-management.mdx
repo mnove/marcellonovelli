@@ -1,0 +1,273 @@
+---
+title: 5 Essential React Hooks to Master State Management
+description: A guide to five powerful React hooks that can simplify state management in your applications.
+date: 2025-07-02
+author: marcello
+tags: ["react", "hooks", "state-management", "web-development"]
+---
+
+
+# 5 Essential React Hooks to Master State Management
+
+I love react hooks and use them all the time. While `useState` and `useEffect` are the bread and butter, there are specialized hooks that can make your state management much more elegant and powerful. These are 5 hooks that I find myself using in almost every project, and they can help you write cleaner, more maintainable code.
+
+### Want to see more hooks?
+
+If you want to see more hooks like these, check out the [unlogg/hooks](https://unlogg.com/docs/unlogg-hooks). It has a growing collection of custom hooks that can help you manage state more effectively in your React applications.
+
+## 1. useDisclosure - Your Modal's Best Friend
+
+> See code for: [useDisclosure](https://unlogg.com/docs/unlogg-hooks/state/use-disclosure)
+
+Ever found yourself writing the same open/close logic for modals, dropdowns, or any toggle-based UI? `useDisclosure` is here to save the day.
+
+### When to use it:
+
+- Modals and dialogs
+- Dropdown menus
+- Collapsible sections
+- Any on/off state with callbacks
+
+### The Hook:
+
+```typescript
+function useDisclosure(
+  initialState: boolean = false,
+  options: { onOpen?: () => void; onClose?: () => void } = {}
+): [boolean, { open: () => void; close: () => void; toggle: () => void }];
+```
+
+### Real-world example:
+
+```tsx
+function MyModal() {
+  const [opened, { open, close, toggle }] = useDisclosure(false, {
+    onOpen: () => console.log("Modal opened!"),
+    onClose: () => console.log("Modal closed!"),
+  });
+
+  return (
+    <div>
+      <Button onClick={open}>Open Modal</Button>
+      <Dialog open={opened} onOpenChange={opened ? close : open}>
+        <DialogContent>
+          <h2>Hello World!</h2>
+          <Button onClick={close}>Close</Button>
+          <Button onClick={toggle}>Toggle</Button>
+        </DialogContent>
+      </Dialog>
+    </div>
+  );
+}
+```
+
+**Why it's awesome:** No more forgetting to add `onOpen` callbacks or accidentally creating infinite re-renders. The hook handles all the edge cases for you.
+
+## 2. useStateHistory - Time Travel for Your State
+
+> See code for: [useStateHistory](https://unlogg.com/docs/unlogg-hooks/state/use-state-history)
+
+Want to add undo/redo functionality without the complexity? `useStateHistory` gives you time-travel powers for any state value.
+
+### When to use it:
+
+- Text editors with undo/redo
+- Drawing applications
+- Form wizards
+- Any app where users might want to revert changes
+
+### The Hook:
+
+```typescript
+function useStateHistory<T>(
+  initialValue: T,
+  options: { maxHistorySize?: number } = {}
+): [
+  T,
+  {
+    setValue: (value: T | ((prev: T) => T)) => void;
+    back: () => void;
+    forward: () => void;
+    canGoBack: boolean;
+    canGoForward: boolean;
+    history: T[];
+  },
+];
+```
+
+### Real-world example:
+
+```tsx
+function CounterWithHistory() {
+  const [count, { setValue, back, forward, canGoBack, canGoForward }] =
+    useStateHistory(0, { maxHistorySize: 10 });
+
+  return (
+    <div>
+      <h2>Count: {count}</h2>
+      <Button onClick={() => setValue((prev) => prev + 1)}>+1</Button>
+      <Button onClick={() => setValue((prev) => prev - 1)}>-1</Button>
+
+      <Button onClick={back} disabled={!canGoBack}>
+        ← Undo
+      </Button>
+      <Button onClick={forward} disabled={!canGoForward}>
+        Redo →
+      </Button>
+    </div>
+  );
+}
+```
+
+**Pro tip:** The hook automatically manages memory by limiting history size, so you don't have to worry about memory leaks in long-running apps.
+
+## 3. useLocalStorage - Persistent State Made Simple
+
+> See code for: [useLocalStorage](https://unlogg.com/docs/unlogg-hooks/state/use-local-storage)
+
+Tired of losing user preferences on page refresh? `useLocalStorage` makes state persistence as easy as regular `useState`.
+
+### When to use it:
+
+- User preferences (theme, language)
+- Shopping cart contents
+- Form draft saving
+- Any state that should survive browser sessions
+
+### The Hook:
+
+```typescript
+function useLocalStorage<T>({
+  key: string;
+  defaultValue: T;
+}): [T, (value: T) => void]
+```
+
+### Real-world example:
+
+```tsx
+function ThemeToggle() {
+  const [theme, setTheme] = useLocalStorage({
+    key: "user-theme",
+    defaultValue: "dark",
+  });
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
+
+  return (
+    <div className={`app ${theme}`}>
+      <Button onClick={toggleTheme}>
+        Switch to {theme === "dark" ? "Light" : "Dark"} mode
+      </Button>
+    </div>
+  );
+}
+```
+
+**The magic:** It handles SSR gracefully, manages JSON serialization, and provides error handling out of the box. Your state just works™.
+
+## 4. useDebounceValue - Performance Optimization Without the Headache
+
+> See code for: [useDebounceValue](https://unlogg.com/docs/unlogg-hooks/state/use-debounced-value)
+
+Search boxes, API calls, expensive calculations - `useDebounceValue` prevents your app from choking on rapid updates.
+
+### When to use it:
+
+- Search inputs
+- API calls triggered by user input
+- Expensive calculations
+- Auto-save functionality
+
+### The Hook:
+
+```typescript
+function useDebounceValue<T>(
+  initialValue: T,
+  delay: number,
+  options: { onDebounce?: (value: T) => void } = {}
+): [T, { setValue: (val: T) => void }];
+```
+
+### Real-world example:
+
+```tsx
+function SearchBox() {
+  const [query, setQuery] = useState("");
+  const [debouncedQuery, { setValue }] = useDebounceValue("", 300, {
+    onDebounce: (value) => {
+      if (value) {
+        // This only fires 300ms after user stops typing
+        fetchSearchResults(value);
+      }
+    },
+  });
+
+  useEffect(() => {
+    setValue(query);
+  }, [query, setValue]);
+
+  return (
+    <div>
+      <Input
+        placeholder="Search..."
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      <p>Searching for: {debouncedQuery}</p>
+    </div>
+  );
+}
+```
+
+**Performance win:** Instead of making 10 API calls as someone types "javascript", you make just 1 call 300ms after they finish.
+
+## 5. Bonus: useToggle - The Simplest State Hook
+
+> See code for: [useToggle](https://unlogg.com/docs/unlogg-hooks/state/use-toggle)
+
+Sometimes you just need a boolean that flips. `useToggle` is the minimalist's dream.
+
+### When to use it:
+
+- Show/hide toggles
+- Feature flags
+- Simple boolean switches
+
+### Quick implementation:
+
+```typescript
+function useToggle(initialValue: boolean = false) {
+  const [value, setValue] = useState(initialValue);
+  const toggle = useCallback(() => setValue((v) => !v), []);
+  return [value, toggle, setValue] as const;
+}
+```
+
+### Usage:
+
+```tsx
+function FeatureToggle() {
+  const [isEnabled, toggle] = useToggle(false);
+
+  return (
+    <Button onClick={toggle}>Feature is {isEnabled ? "ON" : "OFF"}</Button>
+  );
+}
+```
+
+## Wrapping Up
+
+These 5 hooks solve common state management patterns that you'll encounter in almost every React app:
+
+1. **useDisclosure** - Clean modal/toggle state
+2. **useStateHistory** - Undo/redo functionality
+3. **useLocalStorage** - Persistent state across sessions
+4. **useDebounceValue** - Performance optimization for rapid updates
+5. **useToggle** - Simple boolean state management
+
+## Get more hooks!
+
+If you want to see more hooks like these, check out the [unlogg/hooks](https://unlogg.com/docs/unlogg-hooks). It has a growing collection of custom hooks that can help you manage state more effectively in your React applications.

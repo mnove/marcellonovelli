@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Feature } from "./hero.client";
+import Link from "next/link";
 
 const w1 = "Software";
 const w2 = "Engineer";
@@ -206,9 +207,12 @@ export const Hero = () => {
               <VerticalDashedLine />
               <div className="flex flex-row gap-4">
                 <Button variant="outline" size="lg">
-                  Projects
+                  <Link href="/docs/projects/commerce-ui">Projects</Link>
                 </Button>
-                <Button size="lg">Personal Docs</Button>
+
+                <Button size="lg" asChild>
+                  <Link href="/docs">Personal Docs</Link>
+                </Button>
               </div>
 
               <div>100% free to reach out. Forever!</div>
