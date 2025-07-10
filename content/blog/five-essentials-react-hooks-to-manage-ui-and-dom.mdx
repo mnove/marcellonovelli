@@ -1,0 +1,346 @@
+---
+title: 5 Essential React Hooks for UI and DOM Management
+description: A guide to five powerful React hooks that can simplify UI and DOM management in your applications.
+date: 2025-07-10
+author: marcello
+tags: ["react", "hooks", "state-management", "web-development"]
+---
+
+# 5 Essential React Hooks for UI and DOM Management
+
+Working with the DOM in React can be tricky. You're dealing with responsive layouts, scroll behaviors, hover states, and element measurements - all while keeping your components clean and performant. The good news? There are specialized hooks that make DOM manipulation feel as natural as managing regular state.
+
+These 5 hooks have become my go-to tools for handling UI interactions and DOM-related challenges. They'll help you build responsive, interactive interfaces without the usual headaches of direct DOM manipulation.
+
+### Want to see more hooks?
+
+If you want to see more hooks like these, check out the [unlogg/hooks](https://unlogg.com/docs/unlogg-hooks). It has a growing collection of custom hooks that can help you manage UI and DOM interactions more effectively in your React applications.
+
+## 1. useMediaQuery - Responsive Design Made Easy
+
+> See code for: [useMediaQuery](https://unlogg.com/docs/unlogg-hooks/ui/use-media-query)
+
+Tired of writing CSS media queries and then duplicating the same logic in JavaScript? `useMediaQuery` brings CSS media query power directly into your React components.
+
+### When to use it:
+
+- Responsive component rendering
+- Conditional feature loading
+- Adapting to user preferences (dark mode, reduced motion)
+- Device-specific functionality
+
+### The Hook:
+
+```typescript
+function useMediaQuery(
+  query: string,
+  options: {
+    defaultValue?: boolean;
+    initializeWithValue?: boolean;
+  } = {}
+): boolean;
+```
+
+### Real-world example:
+
+```tsx
+function ResponsiveNavigation() {
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+  const prefersReducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
+
+  return (
+    <nav className={isDarkMode ? "dark" : "light"}>
+      {isMobile ? (
+        <MobileMenu />
+      ) : (
+        <DesktopMenu 
+          animated={!prefersReducedMotion}
+        />
+      )}
+    </nav>
+  );
+}
+```
+
+**Why it's awesome:** It handles SSR gracefully, respects user preferences, and keeps your responsive logic co-located with your components. No more guessing what breakpoint triggered a re-render!
+
+## 2. useScrollIntoView - Smooth Scrolling Without the Complexity
+
+> See code for: [useScrollIntoView](https://unlogg.com/docs/unlogg-hooks/ui/use-scroll-into-view)
+
+Need to scroll to elements programmatically? `useScrollIntoView` handles smooth scrolling, respects user preferences, and gives you full control over the behavior.
+
+### When to use it:
+
+- "Skip to content" links
+- Form validation (scroll to error)
+- Step-by-step tutorials
+- Search result highlighting
+
+### The Hook:
+
+```typescript
+function useScrollIntoView<T extends HTMLElement = HTMLElement>(
+  options: ScrollIntoViewOptions = {}
+): [React.RefObject<T | null>, UseScrollIntoViewReturn];
+```
+
+### Real-world example:
+
+```tsx
+function FormWithValidation() {
+  const [errorRef, { scrollIntoView }] = useScrollIntoView({
+    behavior: "smooth",
+    block: "center"
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const errors = validateForm();
+    
+    if (errors.length > 0) {
+      // Smoothly scroll to the first error
+      scrollIntoView();
+    }
+  };
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <Input name="email" />
+      <div ref={errorRef} className="error">
+        {/* Error message appears here */}
+      </div>
+      <Button type="submit">Submit</Button>
+    </form>
+  );
+}
+```
+
+**Smart feature:** It automatically respects `prefers-reduced-motion` settings, falling back to instant scrolling when users prefer less motion. Accessibility built-in!
+
+## 3. useHover - Interactive UI Made Simple
+
+> See code for: [useHover](https://unlogg.com/docs/unlogg-hooks/ui/use-hover)
+
+Hover states are everywhere in modern UIs. `useHover` makes detecting hover states clean and reusable, without the usual event listener boilerplate.
+
+### When to use it:
+
+- Tooltips and popovers
+- Interactive cards
+- Button hover effects
+- Conditional content display
+
+### The Hook:
+
+```typescript
+function useHover<T extends HTMLElement = HTMLElement>(
+  elementRef: React.RefObject<T | null>
+): boolean;
+```
+
+### Real-world example:
+
+```tsx
+function InteractiveCard() {
+  const hoverRef = useRef(null);
+  const isHovered = useHover(hoverRef);
+
+  return (
+    <div
+      ref={hoverRef}
+      className={`card ${isHovered ? "elevated" : ""}`}
+    >
+      <h3>Product Name</h3>
+      <p>Product description...</p>
+      
+      {/* Only show actions on hover */}
+      {isHovered && (
+        <div className="actions">
+          <Button>Add to Cart</Button>
+          <Button variant="outline">View Details</Button>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+**Performance tip:** Unlike CSS `:hover`, this hook lets you conditionally render expensive components only when needed, keeping your app snappy.
+
+## 4. useElementSize - Responsive Components That Actually Respond
+
+> See code for: [useElementSize](https://unlogg.com/docs/unlogg-hooks/ui/use-element-size)
+
+Container queries are the future, but `useElementSize` brings element-based responsive design to React today. Track any element's dimensions and respond to changes in real-time.
+
+### When to use it:
+
+- Container-based responsive design
+- Canvas or SVG sizing
+- Dynamic layout calculations
+- Responsive text sizing
+
+### The Hook:
+
+```typescript
+function useElementSize<T extends HTMLElement = HTMLDivElement>(): [
+  React.RefObject<T | null>,
+  ElementSize
+];
+```
+
+### Real-world example:
+
+```tsx
+function AdaptiveChart() {
+  const [containerRef, { width, height }] = useElementSize();
+
+  // Adjust chart complexity based on available space
+  const showDetails = width > 600;
+  const showLegend = height > 400;
+
+  return (
+    <div ref={containerRef} className="chart-container">
+      <Chart
+        width={width}
+        height={height}
+        showDetails={showDetails}
+        showLegend={showLegend}
+        data={chartData}
+      />
+      
+      {width > 0 && (
+        <p className="size-info">
+          Container: {width} × {height}
+        </p>
+      )}
+    </div>
+  );
+}
+```
+
+**Real-world win:** Perfect for creating truly adaptive components that respond to their container size, not just the viewport. Your charts, grids, and complex layouts will thank you.
+
+## 5. useMobile - Mobile Detection Done Right
+
+> See code for: [useMobile](https://unlogg.com/docs/unlogg-hooks/ui/use-mobile)
+
+Mobile detection sounds simple, but it's full of edge cases. `useMobile` handles SSR, custom breakpoints, and provides a clean API for mobile-specific logic.
+
+### When to use it:
+
+- Mobile-specific features
+- Touch vs mouse interactions
+- Performance optimizations
+- Progressive enhancement
+
+### The Hook:
+
+```typescript
+function useMobile(
+  breakpoint: number = 768,
+  options: UseMobileOptions = {}
+): boolean;
+```
+
+### Real-world example:
+
+```tsx
+function ImageGallery() {
+  const isMobile = useMobile(768, {
+    defaultValue: false, // SSR-friendly
+    initializeWithValue: false
+  });
+
+  return (
+    <div className="gallery">
+      {isMobile ? (
+        // Mobile: Touch-friendly carousel
+        <TouchCarousel images={images} />
+      ) : (
+        // Desktop: Hover-based grid
+        <GridWithHover images={images} />
+      )}
+      
+      {/* Mobile-specific features */}
+      {isMobile && (
+        <SwipeHint>Swipe to see more images</SwipeHint>
+      )}
+    </div>
+  );
+}
+```
+
+**SSR-friendly:** Unlike naive `window.innerWidth` checks, this hook handles server-side rendering gracefully and won't cause hydration mismatches.
+
+## Putting It All Together
+
+Here's how these hooks work together in a real component:
+
+```tsx
+function SmartWidget() {
+  const [widgetRef, { width }] = useElementSize();
+  const hoverRef = useRef(null);
+  const isHovered = useHover(hoverRef);
+  const isMobile = useMobile();
+  const prefersReducedMotion = useMediaQuery("(prefers-reduced-motion: reduce)");
+  const [scrollTarget, { scrollIntoView }] = useScrollIntoView();
+
+  const isCompact = width < 300;
+
+  return (
+    <div ref={widgetRef}>
+      <div
+        ref={hoverRef}
+        className={`widget ${isHovered && !isMobile ? "hover" : ""}`}
+      >
+        <h3>Smart Widget</h3>
+        
+        {/* Responsive content based on actual size */}
+        {isCompact ? (
+          <CompactView />
+        ) : (
+          <FullView />
+        )}
+        
+        {/* Mobile-specific interactions */}
+        {isMobile ? (
+          <TouchControls />
+        ) : (
+          <MouseControls />
+        )}
+        
+        {/* Hover-based actions */}
+        {isHovered && !isMobile && (
+          <ActionButtons
+            animated={!prefersReducedMotion}
+          />
+        )}
+      </div>
+      
+      {/* Scroll target for focus management */}
+      <div ref={scrollTarget} />
+    </div>
+  );
+}
+```
+
+## Wrapping Up
+
+These 5 hooks solve the most common UI and DOM management challenges you'll face:
+
+1. **useMediaQuery** - Responsive design and user preferences
+2. **useScrollIntoView** - Smooth, accessible scrolling
+3. **useHover** - Clean hover state management
+4. **useElementSize** - True container-based responsive design
+5. **useMobile** - Reliable mobile detection
+
+Each hook handles the edge cases, performance concerns, and accessibility requirements that you'd otherwise have to implement yourself. They're the building blocks for creating polished, responsive, and accessible user interfaces.
+
+## Get more hooks!
+
+If you want to see more hooks like these, check out the [unlogg/hooks](https://unlogg.com/docs/unlogg-hooks). It has a growing collection of custom hooks that can help you manage UI and DOM interactions more effectively in your React applications.
+
+The DOM doesn't have to be scary in React - these hooks make it feel like just another piece of state to manage. Happy coding! 🚀
