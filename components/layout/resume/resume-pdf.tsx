@@ -354,8 +354,21 @@ export const PDFResume = () => (
                   <View style={styles.detailsContainer}>
                     <View>
                       <Text style={styles.company}>{experience.company}</Text>
-                      <Text style={styles.period}>{experience.period}</Text>
-                      <Text style={styles.period}>{experience.location}</Text>
+
+                      <View
+                        style={{
+                          display: "flex",
+                          flexDirection: "row",
+                          alignItems: "center",
+                          gap: 2,
+                        }}
+                      >
+                        <Text style={styles.period}>{experience.location}</Text>
+                        <Text style={styles.period}> · </Text>
+                        <Text style={styles.period}>{experience.period}</Text>
+                        <Text style={styles.period}> · </Text>
+                        <Text style={styles.period}>{experience.length}</Text>
+                      </View>
                     </View>
                     <View style={styles.badgeContainer}>
                       {experience.badges?.map((badge, index) => (
@@ -410,14 +423,13 @@ export const PDFResume = () => (
               marginBottom: 10,
             }}
           >
-            See{" "}
+            Discover all my projects:{" "}
             <Link
               src="https://www.marcellonovelli.com/docs"
               style={styles.link}
             >
               marcellonovelli.com/docs
             </Link>{" "}
-            for complete lists
           </Text>
         </View>
 

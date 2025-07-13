@@ -7,6 +7,7 @@ export interface Experience {
   id: string;
   title: string;
   company: string;
+  length?: string; // Optional field for length of experience
   period: string;
   location: string;
   companyUrl?: string;
@@ -37,9 +38,9 @@ type Project = {
 
 export const hero: Hero = {
   title: "Marcello Novelli",
-  subtitle: "Product Lead | Web Developer",
+  subtitle: "Product Manager | Web Developer",
   description:
-    "I am a product lead and web developer with a passion for design. I have experience in leading product development, designing user interfaces, and managing teams in tech startups. My expertise lies in creating scalable SaaS platforms and optimizing business processes to drive growth.",
+    "I am a product manager and web developer with a passion for design. I have experience in leading product development, designing user interfaces, and managing teams in tech startups. My expertise lies in creating scalable SaaS platforms and optimizing business processes to drive growth.",
 };
 
 export const experiences: Experience[] = [
@@ -47,7 +48,8 @@ export const experiences: Experience[] = [
     id: "stackzero",
     title: "Product Lead | Developer | Co-Founder (SaaS / API)",
     company: "Stackzero",
-    period: "Jan 2022 - Present · 3yrs",
+    period: "Jan 2022 - Present",
+    length: "3 yrs",
     location: "London, UK - Remote",
     companyUrl: "https://www.stackzero.co/",
     logoUrl:
@@ -73,7 +75,8 @@ export const experiences: Experience[] = [
     id: "octeract",
     title: "Product & Operations Lead (Web / SaaS)",
     company: "Octeract",
-    period: "Jan 2020 - Jan 2021 · 1y",
+    period: "Jan 2020 - Jan 2021",
+    length: "1 yr",
     location: "London, UK - Remote",
     logoUrl:
       "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/octeract.jpeg",
@@ -99,7 +102,8 @@ export const experiences: Experience[] = [
     id: "nickelytics",
     title: "Product Manager & Design Engineer (Web)",
     company: "Techstars / Nickelytics (Techstars Portfolio '20)",
-    period: "Oct 2019 - Jan 2021 · 2yrs",
+    period: "Oct 2019 - Jan 2021",
+    length: "2 yrs",
     location: "Turin, Italy - Florida, USA - Remote",
     logoUrl:
       "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/nickelytics.jpeg",
@@ -155,7 +159,8 @@ export const experiences: Experience[] = [
     id: "ucl",
     title: "Master of Science Student - UCL school of Engineering",
     company: "University College London (UCL)",
-    period: "Sep 2018 - Sep 2019 · 1 yr 1 mo",
+    period: "Sep 2018 - Sep 2019",
+    length: "1 yr 1 mo",
     location: "London, UK",
     companyUrl: "https://www.ucl.ac.uk/",
     description:
@@ -179,7 +184,8 @@ export const experiences: Experience[] = [
     id: "carv",
     title: "Operations Manager (Founding Team)",
     company: "Carv by MotionMetrics",
-    period: "2017 - 2018 · 2 yrs",
+    period: "2017 - 2018",
+    length: "2 yrs",
     logoUrl:
       "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/carv.jpeg",
     location: "London, UK",
