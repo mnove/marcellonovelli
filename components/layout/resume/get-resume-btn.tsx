@@ -5,6 +5,7 @@ import { pdf } from "@react-pdf/renderer";
 import { PDFResume } from "./resume-pdf";
 import { Download } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 export const DownloadResumeButton = () => {
   const [isGenerating, setIsGenerating] = useState(false);
@@ -40,7 +41,10 @@ export const DownloadResumeButton = () => {
     <button
       onClick={downloadPDF}
       disabled={isGenerating}
-      className={buttonVariants({ variant: "outline", size: "sm" })}
+      className={cn(
+        buttonVariants({ variant: "secondary", size: "sm" }),
+        "cursor-pointer"
+      )}
     >
       <Download size={16} />
       {isGenerating ? "Generating PDF..." : "Generate my Resume"}
