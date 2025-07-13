@@ -37,9 +37,9 @@ type Project = {
 
 export const hero: Hero = {
   title: "Marcello Novelli",
-  subtitle: "Product Lead | Developer | Co-Founder",
+  subtitle: "Product Lead | Web Developer",
   description:
-    "I am a product lead and developer with a passion for building innovative products. I have experience in leading product development, designing user interfaces, and managing operations in tech startups. My expertise lies in creating scalable SaaS platforms and optimizing business processes to drive growth.",
+    "I am a product lead and web developer with a passion for design. I have experience in leading product development, designing user interfaces, and managing teams in tech startups. My expertise lies in creating scalable SaaS platforms and optimizing business processes to drive growth.",
 };
 
 export const experiences: Experience[] = [
@@ -81,7 +81,7 @@ export const experiences: Experience[] = [
       "Octeract is an optimization and data analysis platform that helps businesses make data-driven decisions. My role involved working closely with the product team to design and develop the web application and first SaaS version of the product.",
 
     shortDescription:
-      "Product and Operations Lead at Octeract, a data analysis platform.",
+      "Product and Operations Lead at Octeract, an optimization and data analysis platform.",
     responsibilities: [
       "Responsible for company-wide operations and projects across marketing, engineering, product and sales.",
       "Lead product/operations for the company's 1st web product (SaaS).",
@@ -217,15 +217,7 @@ export const projects: Project[] = [
       { label: "E-commerce", color: "green" },
       { label: "Full Stack", color: "purple" },
     ],
-    technologies: [
-      "React",
-      "GraphQL",
-      "Apollo Client",
-      "Mantine UI",
-      "Recharts",
-      "DataTables",
-      "SuperTokens",
-    ],
+    technologies: ["React", "GraphQL", "Mantine UI", "Auth", "Caching"],
     imageUrl: undefined,
   },
   {
@@ -263,7 +255,7 @@ export const projects: Project[] = [
     id: "commerce-ui",
     title: "commerce-ui",
     description:
-      "An open-source, component library for building e-commerce sites and apps with React, Next.js, and Tailwind CSS.",
+      "An open-source, component library for building e-commerce sites and apps.",
     logoUrl:
       "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/github.jpeg",
     url: "https://ui.stackzero.co",
@@ -278,8 +270,35 @@ export const projects: Project[] = [
       "Next.js",
       "Tailwind CSS",
       "shadcn/ui",
-      "Fumadocs",
       "Framer Motion",
     ],
   },
+];
+
+export const codingSkills = [
+  "JavaScript",
+  "TypeScript",
+  "React",
+  "Next.js",
+  "Node.js",
+  "GraphQL",
+  "Tailwind CSS",
+  "Framer Motion",
+  "shadcn/ui",
+  "PostgreSQL",
+  "Docker",
+  "DigitalOcean",
+  "AWS",
+];
+
+export const designProductSkills = [
+  "Product Design",
+  "UI/UX Design",
+  "Figma",
+  "Prototyping",
+  "User Research",
+  "Wireframing",
+  "Design Systems",
+  "Responsive Design",
+  "Accessibility (a11y)",
 ];

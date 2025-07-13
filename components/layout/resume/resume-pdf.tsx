@@ -2,7 +2,13 @@
 
 "use client";
 
-import { experiences, hero, projects } from "@/data/experience";
+import {
+  experiences,
+  hero,
+  projects,
+  codingSkills,
+  designProductSkills,
+} from "@/data/experience";
 import {
   Document,
   Page,
@@ -124,6 +130,13 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "bold",
     marginBottom: 3,
+    fontFamily: "Plus Jakarta Sans",
+  },
+
+  projectTitle: {
+    fontSize: 10,
+    fontWeight: "bold",
+    marginBottom: 1,
     fontFamily: "Plus Jakarta Sans",
   },
   company: {
@@ -368,91 +381,280 @@ export const PDFResume = () => (
       </View>
 
       <View style={styles.section}>
-        <Text
-          style={{
-            fontSize: 12,
-            textAlign: "left",
-            marginTop: 10,
-            marginBottom: 10,
-            fontWeight: "bold",
-            letterSpacing: 1.2,
-          }}
-        >
-          PROJECTS
-        </Text>
-
-        {projects.map((project) => (
-          <View key={project.id} style={{ marginBottom: 5 }} wrap={false}>
-            <View style={styles.experienceHeader}>
-              <Image style={styles.logo} src={project.logoUrl} />
-              <View style={styles.projectContent}>
-                <View
-                  style={{
-                    display: "flex",
-                    flexDirection: "row",
-                    alignContent: "center",
-                    alignItems: "center",
-                    gap: 6,
-                  }}
-                >
-                  <Text style={styles.title}>{project.title}</Text>
-                  <Text style={styles.link}>{project.url}</Text>
-                </View>
-
-                <View style={styles.detailsContainer}>
-                  <View>
-                    <Text style={styles.period}>{project.description}</Text>
-                  </View>
-                </View>
-                <View style={styles.badgeContainer}>
-                  {project.technologies?.map((tech, index) => (
-                    <Text key={index} style={styles.badge}>
-                      {tech}
-                    </Text>
-                  ))}
-                </View>
-
-                {/* {experience.responsibilities.map((responsibility, index) => (
-                    <Text key={index} style={styles.responsibility}>
-                      • {responsibility}
-                    </Text>
-                  ))} */}
-              </View>
-            </View>
-          </View>
-        ))}
-      </View>
-
-      <View style={styles.section}>
-        <Text
-          style={{
-            fontSize: 12,
-            textAlign: "left",
-            marginTop: 10,
-            marginBottom: 10,
-            fontWeight: "bold",
-            letterSpacing: 1.2,
-          }}
-        >
-          EDUCATION
-        </Text>
-
         <View
           style={{
             display: "flex",
             flexDirection: "row",
-            gap: 20,
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: 10,
           }}
         >
-          <View>
-            <Text style={styles.title}>Bachelor of Management</Text>
-            <Text style={styles.period}>University of British Columbia</Text>
-            <Text style={styles.period}>Vancouver, Canada</Text>
+          <Text
+            style={{
+              fontSize: 12,
+              textAlign: "left",
+              marginTop: 10,
+              marginBottom: 5,
+              fontWeight: "bold",
+              letterSpacing: 1.2,
+            }}
+          >
+            LATEST PROJECTS
+          </Text>
+          <Text
+            style={{
+              fontSize: 9,
+              textAlign: "left",
+              marginTop: 10,
+              marginBottom: 10,
+            }}
+          >
+            See{" "}
+            <Link
+              src="https://www.marcellonovelli.com/docs"
+              style={styles.link}
+            >
+              marcellonovelli.com/docs
+            </Link>{" "}
+            for complete lists
+          </Text>
+        </View>
+
+        {/* Split projects into two columns */}
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: 16,
+          }}
+        >
+          {/* Left column */}
+          <View style={{ flex: 1 }}>
+            {projects
+              .filter((_, idx) => idx % 2 === 0)
+              .map((project) => (
+                <View key={project.id} style={{ marginBottom: 5 }} wrap={true}>
+                  <View style={styles.experienceHeader}>
+                    <Image style={styles.logo} src={project.logoUrl} />
+                    <View style={styles.projectContent}>
+                      <View
+                        style={{
+                          marginBottom: 3,
+                        }}
+                      >
+                        <Text style={styles.projectTitle}>{project.title}</Text>
+                        <Text style={styles.link}>{project.url}</Text>
+                      </View>
+
+                      <View style={styles.detailsContainer}>
+                        <View>
+                          <Text style={styles.period}>
+                            {project.description}
+                          </Text>
+                        </View>
+                      </View>
+                      <View style={styles.badgeContainer}>
+                        {project.technologies?.map((tech, index) => (
+                          <Text key={index} style={styles.badge}>
+                            {tech}
+                          </Text>
+                        ))}
+                      </View>
+
+                      {/* {experience.responsibilities.map((responsibility, index) => (
+                    <Text key={index} style={styles.responsibility}>
+                      • {responsibility}
+                    </Text>
+                  ))} */}
+                    </View>
+                  </View>
+                </View>
+              ))}
           </View>
-          <View>
-            <Text style={styles.title}>MSc Technology</Text>
-            <Text style={styles.period}>Faculty of Engineering - UCL </Text>
-            <Text style={styles.period}>London, UK</Text>
+          {/* Right column */}
+          <View style={{ flex: 1 }}>
+            {projects
+              .filter((_, idx) => idx % 2 === 1)
+              .map((project) => (
+                <View key={project.id} style={{ marginBottom: 5 }} wrap={true}>
+                  <View style={styles.experienceHeader}>
+                    <Image style={styles.logo} src={project.logoUrl} />
+                    <View style={styles.projectContent}>
+                      <View
+                        style={{
+                          marginBottom: 3,
+                        }}
+                      >
+                        <Text style={styles.projectTitle}>{project.title}</Text>
+                        <Text style={styles.link}>{project.url}</Text>
+                      </View>
+
+                      <View style={styles.detailsContainer}>
+                        <View>
+                          <Text style={styles.period}>
+                            {project.description}
+                          </Text>
+                        </View>
+                      </View>
+                      <View style={styles.badgeContainer}>
+                        {project.technologies?.map((tech, index) => (
+                          <Text key={index} style={styles.badge}>
+                            {tech}
+                          </Text>
+                        ))}
+                      </View>
+
+                      {/* {experience.responsibilities.map((responsibility, index) => (
+                    <Text key={index} style={styles.responsibility}>
+                      • {responsibility}
+                    </Text>
+                  ))} */}
+                    </View>
+                  </View>
+                </View>
+              ))}
+          </View>
+        </View>
+      </View>
+
+      {/* Skills and Education side by side */}
+      <View style={styles.section}>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            gap: 24,
+            alignItems: "flex-start",
+          }}
+        >
+          {/* Skills Section */}
+          <View style={{ flex: 2 }}>
+            <Text
+              style={{
+                fontSize: 12,
+                textAlign: "left",
+                marginTop: 10,
+                marginBottom: 6,
+                fontWeight: "bold",
+                letterSpacing: 1.2,
+              }}
+            >
+              SKILLS
+            </Text>
+            <View
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                gap: 16,
+              }}
+            >
+              {/* Coding Skills */}
+              <View style={{ flex: 1 }}>
+                <Text
+                  style={{ fontSize: 10, fontWeight: "bold", marginBottom: 2 }}
+                >
+                  Coding
+                </Text>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    gap: 8,
+                  }}
+                >
+                  <View style={{ flex: 1 }}>
+                    {codingSkills
+                      .filter((_, idx) => idx % 2 === 0)
+                      .map((skill) => (
+                        <Text
+                          key={skill}
+                          style={{ fontSize: 8, marginBottom: 1 }}
+                        >
+                          • {skill}
+                        </Text>
+                      ))}
+                  </View>
+                  <View style={{ flex: 1 }}>
+                    {codingSkills
+                      .filter((_, idx) => idx % 2 === 1)
+                      .map((skill) => (
+                        <Text
+                          key={skill}
+                          style={{ fontSize: 8, marginBottom: 1 }}
+                        >
+                          • {skill}
+                        </Text>
+                      ))}
+                  </View>
+                </View>
+              </View>
+              {/* Design & Product Skills */}
+              <View style={{ flex: 1 }}>
+                <Text
+                  style={{ fontSize: 10, fontWeight: "bold", marginBottom: 2 }}
+                >
+                  Design & Product
+                </Text>
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    gap: 8,
+                  }}
+                >
+                  <View style={{ flex: 1 }}>
+                    {designProductSkills
+                      .filter((_, idx) => idx % 2 === 0)
+                      .map((skill) => (
+                        <Text
+                          key={skill}
+                          style={{ fontSize: 8, marginBottom: 1 }}
+                        >
+                          • {skill}
+                        </Text>
+                      ))}
+                  </View>
+                  <View style={{ flex: 1 }}>
+                    {designProductSkills
+                      .filter((_, idx) => idx % 2 === 1)
+                      .map((skill) => (
+                        <Text
+                          key={skill}
+                          style={{ fontSize: 8, marginBottom: 1 }}
+                        >
+                          • {skill}
+                        </Text>
+                      ))}
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          {/* Education Section */}
+          <View style={{ flex: 1 }}>
+            <Text
+              style={{
+                fontSize: 12,
+                textAlign: "left",
+                marginTop: 10,
+                marginBottom: 6,
+                fontWeight: "bold",
+                letterSpacing: 1.2,
+              }}
+            >
+              EDUCATION
+            </Text>
+            <View>
+              <Text style={styles.title}>Bachelor of Management</Text>
+              <Text style={styles.period}>University of British Columbia</Text>
+              <Text style={styles.period}>Vancouver, Canada</Text>
+            </View>
+            <View style={{ marginTop: 6 }}>
+              <Text style={styles.title}>MSc Technology</Text>
+              <Text style={styles.period}>Faculty of Engineering - UCL </Text>
+              <Text style={styles.period}>London, UK</Text>
+            </View>
           </View>
         </View>
       </View>
