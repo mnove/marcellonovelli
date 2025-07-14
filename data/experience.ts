@@ -40,7 +40,7 @@ export const hero: Hero = {
   title: "Marcello Novelli",
   subtitle: "Product Manager | Web Developer",
   description:
-    "I am a product manager and web developer with a passion for design. I have experience in leading product development, designing user interfaces, and managing teams in tech startups. My expertise lies in creating scalable SaaS platforms and optimizing business processes to drive growth.",
+    "I’m a product manager and web developer with a strong design focus. I’ve led product development, crafted user interfaces, and managed teams in tech startups. My expertise is in building scalable SaaS platforms and apps while optimizing processes to fuel business growth. With a background at the crossroads of product, design, and engineering, I thrive on creating seamless, impactful user experiences.",
 };
 
 export const experiences: Experience[] = [
@@ -218,7 +218,7 @@ export const projects: Project[] = [
       "A set of React hooks for managing user authentication and authorization.",
     url: "https://www.unlogg.com/docs/hooks",
     logoUrl:
-      "https://raw.githubusercontent.com/unlogg/unlogg/7e2f3ce5400efb793d0c7e1a5c0c0de709fe563b/apps/www-docs/public/unlogg-logo-icon.svg",
+      "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/unlogg.jpeg",
     badges: [
       { label: "React Hooks", color: "blue" },
       { label: "Authentication", color: "green" },
