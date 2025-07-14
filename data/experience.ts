@@ -57,7 +57,7 @@ export const experiences: Experience[] = [
     description:
       "Stackzero is an API-first SaaS platform designed to simplify the development of commerce applications. As a co-founder and product lead, I played a pivotal role in shaping the product vision and technical architecture.",
     shortDescription:
-      "Co-Founder and Product Lead at Stackzero, an API-first SaaS platform to build commerce applications. Led the founding team to design and build the core API and web applications.",
+      "Co-Founder and Product Lead at Stackzero, an API-first SaaS platform to build commerce applications. Led the founding team to design and build the core API and web apps. Created the admin dashboard, documentation, and open source UI libraries (used by 1000+ developers daily).",
     responsibilities: [
       "Co-Founder and Product Lead at Stackzero, an API-first SaaS platform to build commerce applications.",
       "Responsible for company-wide operations and projects across marketing, engineering, product and sales.",
@@ -81,10 +81,10 @@ export const experiences: Experience[] = [
     logoUrl:
       "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/octeract.jpeg",
     description:
-      "Octeract is an optimization and data analysis platform that helps businesses make data-driven decisions. My role involved working closely with the product team to design and develop the web application and first SaaS version of the product.",
+      "Octeract is an optimization and data analysis platform that helps businesses make data-driven decisions. My role involved working closely with product and engineering to design and develop the web application and first SaaS version of the product.",
 
     shortDescription:
-      "Product and Operations Lead at Octeract, an optimization and data analysis platform. Managed a team of 5+ product and software engineers.",
+      "Product and Operations Lead at Octeract, an optimization and data analysis platform. Managed a team of 5+ product and software engineers. Developed the first SaaS version of the product and led product operations.",
     responsibilities: [
       "Responsible for company-wide operations and projects across marketing, engineering, product and sales.",
       "Lead product/operations for the company's 1st web product (SaaS).",
@@ -111,7 +111,7 @@ export const experiences: Experience[] = [
     description:
       "Nickelytics is a data analytics platform that helps businesses make data-driven decisions. My role involved working closely with the product team to design and develop the web application.",
     shortDescription:
-      "Product Manager and Design Engineer at Nickelytics, a data analytics platform. Designed and developed the web application and first SaaS version of the product.",
+      "Product Manager and Design Engineer at Nickelytics, a data analytics platform. Designed and developed the web application and first SaaS version of the product (25K+ users and businesses).",
     responsibilities: [
       "Design/develop internal digital tools to help streamline internal ops.",
       "Product prototyping for AdTech Platform (SaaS / Recruiting) using HTML, React, CSS",
@@ -193,16 +193,16 @@ export const experiences: Experience[] = [
     description:
       "I joined Carv, a tech startup focused on enhancing the skiing experience through innovative wearable technology, as part of the founding team. My role involved leading business operations and project management, working closely with the CEO and CCO to establish processes and drive product development.",
     shortDescription:
-      "Operations Manager at Carv, a tech startup enhancing skiing experiences with wearable technology. I was part of the founding team.",
+      "Operations Manager at Carv, a tech startup enhancing skiing experiences with wearable technology. I was part of the founding team. Shipped £700K+ worth of goods and first mobile app releases.",
     responsibilities: [
       "Business operations (Founding Team)",
       "Coordinated pilot projects, 20+ live product tests with investors/partners",
       "Customer service (5K+ customers)",
-      "International logistics (shipped £500K worth of goods)",
+      "International logistics (shipped £700K worth of goods)",
       "MVP development (Web)",
     ],
     badges: [
-      { label: "SaaS", color: "blue" },
+      { label: "Mobile App", color: "blue" },
       { label: "Wearable Technology", color: "green" },
       { label: "Operations Management", color: "purple" },
     ],
