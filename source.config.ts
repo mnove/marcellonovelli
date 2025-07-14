@@ -10,10 +10,19 @@ import { z } from "zod";
 export const docs = defineDocs({
   dir: "content/docs",
   docs: {
-    schema: frontmatterSchema,
+    // @ts-ignore
+    schema: frontmatterSchema.extend({
+      isInProgress: z.boolean().optional(),
+      isAlpha: z.boolean().optional(),
+      isNew: z.boolean().optional(),
+    }),
   },
   meta: {
-    schema: metaSchema,
+    schema: metaSchema.extend({
+      isInProgress: z.boolean().optional(),
+      isAlpha: z.boolean().optional(),
+      isNew: z.boolean().optional(),
+    }),
   },
 });
 

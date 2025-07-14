@@ -7,7 +7,7 @@ export function StatsGrid() {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 py-8">
       <CounterCard
         title="Total GitHub Stars"
-        targetValue={127}
+        targetValue={200}
         description="across all repositories"
         suffix="+"
         delay={200}
@@ -15,16 +15,16 @@ export function StatsGrid() {
 
       <CounterCard
         title="Open Source Contributions"
-        targetValue={89}
+        targetValue={190}
         description="merged pull requests"
         suffix="+"
         delay={400}
       />
 
       <CounterCard
-        title="Projects Completed"
-        targetValue={23}
-        description="client & personal projects"
+        title="OSS Projects"
+        targetValue={7}
+        description="completed and/or maintained"
         suffix="+"
         delay={600}
       />

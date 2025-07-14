@@ -3,10 +3,12 @@
   "description": "Handle global regions in your commerce app.",
   "icon": "Globe",
   "pages": [
+    "unlogg-hooks",
     "commerce-ui",
     "stackzero-api",
     "101webtools",
     "stackzero-dashboard",
+    "myTodo",
     "hyperlane"
   ]
 }
