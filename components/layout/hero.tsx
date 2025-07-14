@@ -111,12 +111,9 @@ export const Hero = () => {
                       <span className="text-orange-400">console</span>.
                       <span className="text-blue-400">log</span>
                       <span className="text-orange-400">(</span>
+                      <span className="text-green-400">&quot;Web&quot;</span>,
                       <span className="text-green-400">
-                        &quot;Software&quot;
-                      </span>
-                      ,
-                      <span className="text-green-400">
-                        &quot;Engineer&quot;
+                        &quot;Developer&quot;
                       </span>
                       <span className="text-orange-400">)</span>;
                     </div>{" "}
@@ -126,10 +123,7 @@ export const Hero = () => {
                         <span className="text-purple-400">const</span>{" "}
                         <span className="text-orange-400">w1</span>{" "}
                         <span className="text-teal-500">=</span>{" "}
-                        <span className="text-green-400">
-                          &quot;Software&quot;
-                        </span>
-                        ;
+                        <span className="text-green-400">&quot;Web&quot;</span>;
                       </p>
                       <p>
                         <span className="text-muted-foreground mr-4">2</span>
@@ -137,7 +131,7 @@ export const Hero = () => {
                         <span className="text-orange-400">w1</span>{" "}
                         <span className="text-teal-500">=</span>{" "}
                         <span className="text-green-400">
-                          &quot;Engineer&quot;
+                          &quot;Developer&quot;
                         </span>
                         ;
                       </p>
@@ -152,12 +146,12 @@ export const Hero = () => {
                       </p>
                     </div>
                     <h1 className="text-balance text-7xl font-semibold leading-none tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-                      <span className="text-muted-foreground">and</span> Web{" "}
+                      <span className="text-muted-foreground">and</span> Product{" "}
                       <LineShadowText
                         className="italic"
                         shadowColor={shadowColor}
                       >
-                        Designer
+                        Engineer
                       </LineShadowText>
                     </h1>
                   </div>
@@ -178,9 +172,9 @@ export const Hero = () => {
                 >
                   <h1 className='className="text-balance text-6xl font-semibold leading-none tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl "'>
                     <span className="text-muted-foreground">I&apos;m a</span>{" "}
-                    Software Engineer{" "}
-                    <span className="text-muted-foreground">and</span> Web
-                    Designer
+                    Web Developer{" "}
+                    <span className="text-muted-foreground">and</span> Product
+                    Engineer
                   </h1>
                 </motion.div>
               )}

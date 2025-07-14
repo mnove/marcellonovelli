@@ -11,7 +11,8 @@ const inter = Public_Sans({
 
 export const metadata: Metadata = {
   title: "Marcello Novelli",
-  description: "Marcello Novelli's personal website",
+  description:
+    "Hello, I am Marcello Novelli, a Web Developer and Product Engineer. I create software that makes the web a better place.",
 };
 
 export default function Layout({ children }: { children: ReactNode }) {
