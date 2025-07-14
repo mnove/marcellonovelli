@@ -264,7 +264,7 @@ export const PDFResume = () => (
                   }}
                 >
                   <Text style={styles.period}>Website: </Text>
-                  <Link src="https://github.com/mnove" style={styles.link}>
+                  <Link src="https://marcellonovelli.com" style={styles.link}>
                     marcellonovelli.com
                   </Link>
                 </View>
