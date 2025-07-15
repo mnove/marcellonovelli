@@ -20,97 +20,97 @@ import {
   Link,
 } from "@react-pdf/renderer";
 
-// Font.register({
-//   family: "Inter",
-//   fonts: [
-//     {
-//       src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyeMZhrib2Bg-4.ttf",
-//       fontWeight: 100,
-//     },
-//     {
-//       src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfMZhrib2Bg-4.ttf",
-//       fontWeight: 200,
-//     },
-//     {
-//       src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuOKfMZhrib2Bg-4.ttf",
-//       fontWeight: 300,
-//     },
-//     {
-//       src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZhrib2Bg-4.ttf",
-//       fontWeight: 400,
-//     },
-//     {
-//       src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fMZhrib2Bg-4.ttf",
-//       fontWeight: 500,
-//     },
-//     {
-//       src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYMZhrib2Bg-4.ttf",
-//       fontWeight: 600,
-//     },
-//     {
-//       src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYMZhrib2Bg-4.ttf",
-//       fontWeight: 700,
-//     },
-//     {
-//       src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyYMZhrib2Bg-4.ttf",
-//       fontWeight: 800,
-//     },
-//     {
-//       src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuBWYMZhrib2Bg-4.ttf",
-//       fontWeight: 900,
-//     },
-//   ],
-// });
-
 Font.register({
-  family: "Plus Jakarta Sans",
-  src: "/fonts/PlusJakartaSans-Regular.ttf",
-});
-
-Font.register({
-  family: "Plus Jakarta Sans",
-  src: "/fonts/PlusJakartaSans-Medium.ttf",
-});
-
-Font.register({
-  family: "Plus Jakarta Sans",
-  src: "/fonts/PlusJakartaSans-Bold.ttf",
-});
-
-Font.registerHyphenationCallback((word) => [word]);
-// Font.register({
-//   family: "Plus Jakarta Sans",
-//   src: "/fonts/PlusJakartaSans-Light.ttf",
-// });
-
-Font.register({
-  family: "Plus Jakarta Sans",
+  family: "Inter",
   fonts: [
-    { src: "/fonts/PlusJakartaSans-Regular.ttf" }, // font-style: normal, font-weight: normal
     {
-      src: "/fonts/PlusJakartaSans-Medium.ttf",
-      fontStyle: "normal",
+      src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyeMZhrib2Bg-4.ttf",
+      fontWeight: 100,
+    },
+    {
+      src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyfMZhrib2Bg-4.ttf",
+      fontWeight: 200,
+    },
+    {
+      src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuOKfMZhrib2Bg-4.ttf",
+      fontWeight: 300,
+    },
+    {
+      src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZhrib2Bg-4.ttf",
+      fontWeight: 400,
+    },
+    {
+      src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuI6fMZhrib2Bg-4.ttf",
       fontWeight: 500,
     },
     {
-      src: "/fonts/PlusJakartaSans-Bold.ttf",
-      fontStyle: "normal",
+      src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYMZhrib2Bg-4.ttf",
+      fontWeight: 600,
+    },
+    {
+      src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYMZhrib2Bg-4.ttf",
       fontWeight: 700,
     },
     {
-      src: "/fonts/PlusJakartaSans-Light.ttf",
-      fontStyle: "normal",
-      fontWeight: 300,
+      src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuDyYMZhrib2Bg-4.ttf",
+      fontWeight: 800,
+    },
+    {
+      src: "http://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuBWYMZhrib2Bg-4.ttf",
+      fontWeight: 900,
     },
   ],
 });
+
+// Font.register({
+//   family: "Plus Jakarta Sans",
+//   src: "/fonts/PlusJakartaSans-Regular.ttf",
+// });
+
+// Font.register({
+//   family: "Plus Jakarta Sans",
+//   src: "/fonts/PlusJakartaSans-Medium.ttf",
+// });
+
+// Font.register({
+//   family: "Plus Jakarta Sans",
+//   src: "/fonts/PlusJakartaSans-Bold.ttf",
+// });
+
+// Font.registerHyphenationCallback((word) => [word]);
+// // Font.register({
+// //   family: "Plus Jakarta Sans",
+// //   src: "/fonts/PlusJakartaSans-Light.ttf",
+// // });
+
+// Font.register({
+//   family: "Plus Jakarta Sans",
+//   fonts: [
+//     { src: "/fonts/PlusJakartaSans-Regular.ttf" }, // font-style: normal, font-weight: normal
+//     {
+//       src: "/fonts/PlusJakartaSans-Medium.ttf",
+//       fontStyle: "normal",
+//       fontWeight: 500,
+//     },
+//     {
+//       src: "/fonts/PlusJakartaSans-Bold.ttf",
+//       fontStyle: "normal",
+//       fontWeight: 700,
+//     },
+//     {
+//       src: "/fonts/PlusJakartaSans-Light.ttf",
+//       fontStyle: "normal",
+//       fontWeight: 300,
+//     },
+//   ],
+// });
 
 const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
     backgroundColor: "#FFFFFF",
     padding: 15,
-    fontFamily: "Plus Jakarta Sans",
+    fontFamily: "Inter",
   },
   verticalSeparator: {
     width: "100%",
@@ -130,37 +130,37 @@ const styles = StyleSheet.create({
     fontSize: 12,
     fontWeight: "bold",
     marginBottom: 3,
-    fontFamily: "Plus Jakarta Sans",
+    fontFamily: "Inter",
   },
 
   projectTitle: {
     fontSize: 10,
     fontWeight: "bold",
     marginBottom: 1,
-    fontFamily: "Plus Jakarta Sans",
+    fontFamily: "Inter",
   },
   company: {
     fontSize: 10,
     fontWeight: "medium",
-    fontFamily: "Plus Jakarta Sans",
+    fontFamily: "Inter",
   },
   period: {
     fontSize: 9,
     color: "#666",
-    fontFamily: "Plus Jakarta Sans",
+    fontFamily: "Inter",
   },
   description: {
     fontSize: 10,
     marginTop: 5,
     marginBottom: 3,
-    fontFamily: "Plus Jakarta Sans",
+    fontFamily: "Inter",
     textAlign: "justify",
   },
   responsibility: {
     fontSize: 11,
     marginLeft: 0,
     marginBottom: 3,
-    fontFamily: "Plus Jakarta Sans",
+    fontFamily: "Inter",
   },
   experienceHeader: {
     flexDirection: "row",
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     marginRight: 5,
     fontSize: 8,
     color: "#333",
-    fontFamily: "Plus Jakarta Sans",
+    fontFamily: "Inter",
   },
   avatar: {
     width: 64,
