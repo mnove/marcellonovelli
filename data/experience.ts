@@ -75,7 +75,7 @@ export const experiences: Experience[] = [
     id: "octeract",
     title: "Product & Operations Lead (Web / SaaS)",
     company: "Octeract",
-    period: "Jan 2020 - Jan 2021",
+    period: "Jan 2021 - Jan 2022",
     length: "1 yr",
     location: "London, UK - Remote",
     logoUrl:
