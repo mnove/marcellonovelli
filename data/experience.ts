@@ -57,7 +57,7 @@ export const experiences: Experience[] = [
     description:
       "Stackzero is an API-first SaaS platform designed to simplify the development of commerce applications. As a co-founder and product lead, I played a pivotal role in shaping the product vision and technical architecture.",
     shortDescription:
-      "Co-Founder and Product Lead at Stackzero, an API-first SaaS platform to build commerce applications. Led the founding team to design and build the core API and web apps. Created the admin dashboard, documentation, and open source UI libraries (used by 1000+ developers daily).",
+      "Co-Founder and Product Lead at Stackzero, an API-first SaaS platform to build commerce applications. Led the founding team to design and build the core API and web apps. Created the admin dashboard, documentation, and open-source UI libraries (used by 1000+ developers daily).",
     responsibilities: [
       "Co-Founder and Product Lead at Stackzero, an API-first SaaS platform to build commerce applications.",
       "Responsible for company-wide operations and projects across marketing, engineering, product and sales.",
