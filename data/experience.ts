@@ -38,15 +38,15 @@ type Project = {
 
 export const hero: Hero = {
   title: "Marcello Novelli",
-  subtitle: "Product Manager | Web Developer",
+  subtitle: "Design Engineer | Web Developer",
   description:
-    "I’m a product manager and web developer with a strong design focus. I’ve led product development, crafted user interfaces, and managed teams in tech startups. My expertise is in building scalable SaaS platforms and apps while optimizing processes to fuel business growth. With a background at the crossroads of product, design, and engineering, I thrive on creating seamless, impactful user experiences.",
+    "I’m a design engineer and web developer. I’ve led product development, crafted user interfaces, and managed teams in tech startups. My expertise is in building scalable SaaS platforms and apps while optimizing processes to fuel business growth. With a background at the crossroads of product, design, and engineering, I thrive on creating seamless, impactful user experiences.",
 };
 
 export const experiences: Experience[] = [
   {
     id: "stackzero",
-    title: "Product Lead | Developer | Co-Founder (SaaS / API)",
+    title: "Frontend Engineer | Design Lead | Co-Founder (SaaS / API)",
     company: "Stackzero",
     period: "Jan 2022 - Present",
     length: "3 yrs",
@@ -57,9 +57,9 @@ export const experiences: Experience[] = [
     description:
       "Stackzero is an API-first SaaS platform designed to simplify the development of commerce applications. As a co-founder and product lead, I played a pivotal role in shaping the product vision and technical architecture.",
     shortDescription:
-      "Co-Founder and Product Lead at Stackzero, an API-first SaaS platform to build commerce applications. Led the founding team to design and build the core API and web apps. Created the admin dashboard, documentation, and open-source UI libraries (used by 1000+ developers daily).",
+      "Frontend Engineer and Design Lead at Stackzero, an API-first SaaS platform to build commerce applications. Led the founding team to design and build the core API and web apps. Created the admin dashboard, documentation, and open-source UI libraries (used by 1000+ developers).",
     responsibilities: [
-      "Co-Founder and Product Lead at Stackzero, an API-first SaaS platform to build commerce applications.",
+      "Co-Founder and Design Lead at Stackzero, an API-first SaaS platform to build commerce applications.",
       "Responsible for company-wide operations and projects across marketing, engineering, product and sales.",
       "Designed and architected the core API (Node.js, GraphQL) and web applications (React, Next.js) for the Stackzero platform.",
       "Designed and develop the product's admin dashboard (React, TypeScript, TailwindCSS), documentation (Next.js, MDX) and marketing website (Next.js, TailwindCSS).",
@@ -73,7 +73,7 @@ export const experiences: Experience[] = [
   },
   {
     id: "octeract",
-    title: "Product & Operations Lead (Web / SaaS)",
+    title: "Product Design & Operations Lead (Web / SaaS)",
     company: "Octeract",
     period: "Jan 2021 - Jan 2022",
     length: "1 yr",
@@ -213,10 +213,10 @@ export const experiences: Experience[] = [
 export const projects: Project[] = [
   {
     id: "unlogg-hooks",
-    title: "Unlogg Hooks",
+    title: "Unlogg UI & Hooks",
     description:
       "A set of React hooks for managing user authentication and authorization.",
-    url: "https://www.unlogg.com/docs/hooks",
+    url: "https://www.unlogg.com/docs",
     logoUrl:
       "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/unlogg.jpeg",
     badges: [
@@ -226,6 +226,28 @@ export const projects: Project[] = [
     ],
     technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS"],
     imageUrl: undefined,
+  },
+  {
+    id: "commerce-ui",
+    title: "commerce-ui",
+    description:
+      "An open-source, component library for building e-commerce sites and apps.",
+    logoUrl:
+      "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/github.jpeg",
+    url: "https://ui.stackzero.co",
+    imageUrl: "https://ui.stackzero.co/logo.svg",
+    badges: [
+      { label: "UI Library", color: "blue" },
+      { label: "Open Source", color: "green" },
+      { label: "E-commerce", color: "purple" },
+    ],
+    technologies: [
+      "React",
+      "Next.js",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Framer Motion",
+    ],
   },
   // {
   //   id: "stackzero-dashboard",
@@ -272,28 +294,6 @@ export const projects: Project[] = [
     ],
     technologies: ["React", "Node.js", "PostgreSQL", "Docker", "DigitalOcean"],
     imageUrl: undefined,
-  },
-  {
-    id: "commerce-ui",
-    title: "commerce-ui",
-    description:
-      "An open-source, component library for building e-commerce sites and apps.",
-    logoUrl:
-      "https://raw.githubusercontent.com/mnove/marcellonovelli/refs/heads/main/public/logos/github.jpeg",
-    url: "https://ui.stackzero.co",
-    imageUrl: "https://ui.stackzero.co/logo.svg",
-    badges: [
-      { label: "UI Library", color: "blue" },
-      { label: "Open Source", color: "green" },
-      { label: "E-commerce", color: "purple" },
-    ],
-    technologies: [
-      "React",
-      "Next.js",
-      "Tailwind CSS",
-      "shadcn/ui",
-      "Framer Motion",
-    ],
   },
 ];
 
